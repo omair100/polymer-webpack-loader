@@ -12,8 +12,8 @@ class RegisterHtmlTemplate {
    * @param {string} val A `<dom-module>` as an HTML string
    */
   static register(val) {
-    let content;
-    const template = document.createElement('template');
+    var content;
+    var template = document.createElement('template');
     template.innerHTML = val;
     if (template.content) {
       content = template.content; // eslint-disable-line prefer-destructuring
@@ -33,15 +33,15 @@ class RegisterHtmlTemplate {
    * @param {string} val An HTML string
    */
   static toBody(val) {
-    const trimmedVal = val.trim();
+    var trimmedVal = val.trim();
     if (trimmedVal) {
-      const div = document.createElement('div');
+      var div = document.createElement('div');
       div.innerHTML = trimmedVal;
       if (div.firstChild) {
         if (document.body) {
           document.body.insertBefore(div.firstChild, document.body.firstChild);
         } else {
-          document.addEventListener('DOMContentLoaded', () => {
+          document.addEventListener('DOMContentLoaded', function () {
             document.body.insertBefore(div.firstChild, document.body.firstChild);
           });
         }
